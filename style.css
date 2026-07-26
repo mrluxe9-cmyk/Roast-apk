@@ -1,0 +1,681 @@
+/* ==========================================
+   Roastify AI — MR LUXE
+   Professional Dark UI
+========================================== */
+
+:root{
+    --bg:#0a0a0d;
+    --surface:#15151b;
+    --surface-2:#1c1c24;
+    --border:rgba(255,255,255,.08);
+    --border-strong:rgba(255,255,255,.14);
+
+    --text:#f2f2f5;
+    --text-dim:#9a9aa5;
+    --text-faint:#6b6b75;
+
+    --accent:#8b5cf6;
+    --accent-2:#22d3ee;
+    --accent-3:#f472b6;
+    --gold:#facc15;
+    --danger:#f87171;
+
+    --radius-lg:20px;
+    --radius-md:16px;
+    --radius-sm:12px;
+
+    --shadow-soft:0 8px 24px rgba(0,0,0,.35);
+    --transition:180ms ease;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html,body{
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+body{
+    padding:24px 16px 100px;
+    position:relative;
+}
+
+/* Subtle static ambient background — no animation, cheap on render */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(139,92,246,.14), transparent 40%),
+        radial-gradient(circle at 85% 20%, rgba(34,211,238,.10), transparent 40%),
+        radial-gradient(circle at 50% 100%, rgba(244,114,182,.08), transparent 45%);
+}
+
+/* ==========================================
+   Header
+========================================== */
+
+.hero{
+    text-align:center;
+    margin-bottom:24px;
+}
+
+.logoText{
+    font-size:32px;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--text);
+}
+
+.logoText span{
+    background:linear-gradient(90deg,var(--gold),var(--accent-3),var(--accent),var(--accent-2),var(--gold));
+    background-size:300% 100%;
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:shift 4s linear infinite;
+    display:inline-block;
+}
+
+@keyframes shift{
+    0%{ background-position:0% 0%; }
+    100%{ background-position:300% 0%; }
+}
+
+.appTitle{
+    font-size:20px;
+    font-weight:700;
+    margin-top:10px;
+    color:var(--text);
+}
+
+.appSub{
+    font-size:13px;
+    color:var(--text-dim);
+    margin-top:6px;
+    letter-spacing:.5px;
+}
+
+/* ==========================================
+   Main Card Container
+========================================== */
+
+.card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:20px;
+    box-shadow:var(--shadow-soft);
+}
+
+/* ==========================================
+   Screens
+========================================== */
+
+.screen{
+    display:none;
+}
+
+.screen.active{
+    display:block;
+    animation:fadeIn .25s ease;
+}
+
+@keyframes fadeIn{
+    from{ opacity:0; transform:translateY(8px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+.screenTitle{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:16px;
+    color:var(--text);
+}
+
+/* ==========================================
+   Form Elements
+========================================== */
+
+label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--text-dim);
+    margin-bottom:6px;
+}
+
+input,
+select{
+    width:100%;
+    padding:13px 16px;
+    margin-bottom:16px;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    color:var(--text);
+    font-size:14px;
+    outline:none;
+    transition:border-color var(--transition), box-shadow var(--transition);
+}
+
+input::placeholder{
+    color:var(--text-faint);
+}
+
+input:focus,
+select:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(139,92,246,.18);
+}
+
+select{
+    appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239a9aa5' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 16px center;
+    padding-right:40px;
+}
+
+/* ==========================================
+   Buttons
+========================================== */
+
+button{
+    border:none;
+    border-radius:var(--radius-sm);
+    cursor:pointer;
+    font-family:inherit;
+    transition:transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.generateBox{
+    margin-bottom:16px;
+}
+
+.generateBtn{
+    width:100%;
+    padding:15px;
+    font-size:15px;
+    font-weight:700;
+    color:#0a0a0d;
+    background:linear-gradient(90deg,var(--gold),var(--accent-3));
+    box-shadow:0 8px 20px rgba(244,114,182,.25);
+}
+
+.generateBtn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 26px rgba(244,114,182,.35);
+}
+
+.generateBtn:active{
+    transform:translateY(0) scale(.98);
+}
+
+/* Result Box */
+
+.resultBox{
+    padding:18px;
+    min-height:120px;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    font-size:14.5px;
+    line-height:1.7;
+    color:var(--text);
+}
+
+/* Action Row */
+
+.actionRow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:14px;
+}
+
+.actionBtn{
+    flex:1;
+    min-width:70px;
+    padding:12px 8px;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--text);
+    background:var(--surface-2);
+    border:1px solid var(--border-strong);
+    white-space:nowrap;
+}
+
+.actionBtn:hover{
+    background:#232330;
+    border-color:var(--accent);
+}
+
+.actionBtn:active{
+    transform:scale(.96);
+}
+
+/* Clear Button */
+
+.clearBtn{
+    width:100%;
+    margin-top:18px;
+    padding:13px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--danger);
+    background:rgba(248,113,113,.08);
+    border:1px solid rgba(248,113,113,.25);
+}
+
+.clearBtn:hover{
+    background:rgba(248,113,113,.15);
+}
+
+/* ==========================================
+   Lists (Favorites / History)
+========================================== */
+
+.listBox{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.listCard{
+    padding:14px 16px;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    font-size:13.5px;
+    line-height:1.6;
+    color:var(--text);
+}
+
+.emptyCard{
+    padding:36px 20px;
+    text-align:center;
+    color:var(--text-faint);
+    font-size:13.5px;
+    background:transparent;
+    border:1px dashed var(--border-strong);
+    border-radius:var(--radius-sm);
+}
+
+/* ==========================================
+   Settings
+========================================== */
+
+.settingsCard{
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:6px 18px;
+}
+
+.settingsCard p{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:13px 0;
+    font-size:13.5px;
+    color:var(--text-dim);
+    border-bottom:1px solid var(--border);
+}
+
+.settingsCard p:last-child{
+    border-bottom:none;
+}
+
+.settingsCard strong{
+    color:var(--gold);
+    font-weight:600;
+}
+
+/* ==========================================
+   Bottom Navigation
+========================================== */
+
+.bottomNav{
+    position:fixed;
+    left:16px;
+    right:16px;
+    bottom:16px;
+    height:68px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    background:rgba(21,21,27,.92);
+    backdrop-filter:blur(16px);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    box-shadow:0 12px 30px rgba(0,0,0,.4);
+    z-index:999;
+}
+
+.navBtn{
+    background:transparent;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    padding:8px 14px;
+    color:var(--text-faint);
+}
+
+.navIcon{
+    font-size:20px;
+    line-height:1;
+    transition:transform var(--transition);
+}
+
+.navText{
+    font-size:10.5px;
+    font-weight:600;
+}
+
+.navBtn.active{
+    color:var(--gold);
+}
+
+.navBtn.active .navIcon{
+    transform:translateY(-2px) scale(1.1);
+}
+
+.navBtn:hover{
+    color:var(--text);
+}
+
+/* ==========================================
+   Toast (disabled per request)
+========================================== */
+
+.toast{
+    display:none;
+}
+
+/* ==========================================
+   Footer
+========================================== */
+
+.footer{
+    text-align:center;
+    margin:28px 0 90px;
+    font-size:12.5px;
+    color:var(--text-faint);
+}
+
+.footer strong{
+    color:var(--gold);
+}
+
+/* ==========================================
+   Undo Snackbar
+========================================== */
+
+.snackbar{
+    position:fixed;
+    left:16px;
+    right:16px;
+    bottom:96px;
+    max-width:400px;
+    margin:0 auto;
+    background:var(--surface-2);
+    border:1px solid var(--border-strong);
+    border-radius:var(--radius-sm);
+    padding:12px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    box-shadow:var(--shadow-soft);
+    transform:translateY(20px);
+    opacity:0;
+    pointer-events:none;
+    transition:transform .25s ease, opacity .25s ease;
+    z-index:1500;
+}
+
+.snackbar.show{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+}
+
+.snackbar span{
+    font-size:13px;
+    color:var(--text);
+}
+
+.snackbarUndo{
+    background:transparent;
+    color:var(--gold);
+    font-size:13px;
+    font-weight:700;
+    padding:6px 10px;
+    flex-shrink:0;
+}
+
+.snackbarUndo:hover{
+    text-decoration:underline;
+}
+
+/* ==========================================
+   Roast of the Day
+========================================== */
+
+.dailyCard{
+    background:linear-gradient(135deg, rgba(139,92,246,.15), rgba(244,114,182,.10));
+    border:1px solid var(--border-strong);
+    border-radius:var(--radius-md);
+    padding:16px 18px;
+    margin-bottom:20px;
+}
+
+.dailyLabel{
+    font-size:12px;
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:.5px;
+    margin-bottom:8px;
+}
+
+.dailyText{
+    font-size:13.5px;
+    line-height:1.6;
+    color:var(--text);
+}
+
+/* ==========================================
+   Loading Spinner
+========================================== */
+
+.spinner{
+    display:inline-block;
+    width:16px;
+    height:16px;
+    border:2px solid rgba(10,10,13,.35);
+    border-top-color:#0a0a0d;
+    border-radius:50%;
+    animation:spin .7s linear infinite;
+    vertical-align:middle;
+}
+
+.spinnerCenter{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px 0;
+}
+
+.spinnerCenter .spinner{
+    width:26px;
+    height:26px;
+    border:3px solid var(--border-strong);
+    border-top-color:var(--accent-3);
+}
+
+@keyframes spin{
+    to{ transform:rotate(360deg); }
+}
+
+/* ==========================================
+   List Card (with mini actions)
+========================================== */
+
+.listCard{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.listCardText{
+    flex:1;
+}
+
+.listCardActions{
+    display:flex;
+    gap:6px;
+    flex-shrink:0;
+}
+
+.miniBtn{
+    width:32px;
+    height:32px;
+    padding:0;
+    font-size:13px;
+    background:var(--surface);
+    border:1px solid var(--border-strong);
+    color:var(--text-dim);
+    border-radius:8px;
+}
+
+.miniBtn:hover{
+    color:var(--text);
+    border-color:var(--accent);
+}
+
+.removeMini:hover{
+    color:var(--danger);
+    border-color:var(--danger);
+}
+
+/* ==========================================
+   Confirm Popup
+========================================== */
+
+.confirmOverlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    backdrop-filter:blur(4px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:2000;
+    animation:fadeIn .15s ease;
+    padding:20px;
+}
+
+.confirmBox{
+    background:var(--surface);
+    border:1px solid var(--border-strong);
+    border-radius:var(--radius-md);
+    padding:20px;
+    max-width:320px;
+    width:100%;
+    box-shadow:var(--shadow-soft);
+}
+
+.confirmBox p{
+    font-size:14px;
+    color:var(--text);
+    line-height:1.5;
+    margin-bottom:16px;
+}
+
+.confirmActions{
+    display:flex;
+    gap:10px;
+}
+
+.confirmActions button{
+    flex:1;
+    padding:11px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.confirmCancel{
+    background:var(--surface-2);
+    color:var(--text-dim);
+    border:1px solid var(--border-strong);
+}
+
+.confirmCancel:hover{
+    color:var(--text);
+}
+
+.confirmOk{
+    background:var(--danger);
+    color:#1a0a0a;
+}
+
+.confirmOk:hover{
+    filter:brightness(1.08);
+}
+
+/* ==========================================
+   Scrollbar
+========================================== */
+
+::-webkit-scrollbar{
+    width:6px;
+}
+
+::-webkit-scrollbar-track{
+    background:var(--bg);
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--surface-2);
+    border-radius:10px;
+}
+
+::selection{
+    background:var(--accent);
+    color:#fff;
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width:380px){
+    .logoText{
+        font-size:26px;
+        letter-spacing:2px;
+    }
+
+    .appTitle{
+        font-size:17px;
+    }
+
+    .resultBox{
+        min-height:100px;
+        font-size:13.5px;
+    }
+
+    .navIcon{
+        font-size:18px;
+    }
+}
