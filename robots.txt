@@ -1,5 +1,0 @@
-User-agent: *
-
-Allow: /
-
-Sitemap: https://mrluxe9-cmyk.github.io/Roast-apk/sitemap.xml
