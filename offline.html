@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Offline • Roastify AI</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<style>
+  .errorWrap{
+    min-height:80vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:32px 20px;
+  }
+  .errorWrap h1{ font-size:48px; margin:0 0 8px; }
+  .errorWrap p{ color:var(--text-dim,#9a9aa5); margin:0 0 24px; max-width:340px; }
+  .errorWrap button{
+    padding:12px 24px;
+    border-radius:var(--radius-md,16px);
+    background:var(--accent,#8b5cf6);
+    color:#fff;
+    border:none;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg1" aria-hidden="true"></div>
+<div class="bg2" aria-hidden="true"></div>
+
+<div class="errorWrap">
+  <h1>📡 You're Offline</h1>
+  <p>Roastify AI needs a connection to cook up fresh roasts. Reconnect and try again — your favorites and history are still safe on this device.</p>
+  <button onclick="location.reload()" type="button">🔄 Retry</button>
+</div>
+
+<footer class="footer">
+  <p>Made with ❤️ by <strong>MR LUXE</strong></p>
+</footer>
+
+</body>
+</html>
